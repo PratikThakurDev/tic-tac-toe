@@ -1,4 +1,4 @@
-function gameBoard(){
+function initialGameBoard(){
     let array = [] ;
     let rows = 3 ;
     let columns = 3 ;
@@ -11,16 +11,81 @@ function gameBoard(){
     return array ;
 }
 
-function getHumanIput() {
-    humanSymbol = "X" ;
-    humanSelectedRow = parseInt(prompt('Enter the row you want to select: ')) ;
-    humanSelectedColumn = parseInt(prompt('Enter the column you want to select: ')) ;
+function getHumanInput() {
+    const humanSymbol = "X" ;
+    const humanSelectedRow = parseInt(prompt('Enter the row you want to select: ')) ;
+    const humanSelectedColumn = parseInt(prompt('Enter the column you want to select: ')) ;
     return [humanSymbol,humanSelectedRow,humanSelectedColumn] ;
 }
 
 function getCompInput(){
-    compSymbol = "O" ;
-    compSelectedRow = Math.floor(Math.random()*3) ;
-    compSelectedColumn = Math.floor(Math.random()*3) ;
+    const compSymbol = "O" ;
+    const compSelectedRow = Math.floor(Math.random()*3) ;
+    const compSelectedColumn = Math.floor(Math.random()*3) ;
     return [compSymbol,compSelectedRow,compSelectedColumn] ;
 }
+
+function gameFunction() {
+    let gameBoard = initialGameBoard() ;
+    let gameEnded = false ;
+    while(gameEnded === false){
+        [input,row,column] = getHumanInput() ;
+        if (gameBoard[row][column] === '') {
+            gameBoard[row][column] = input ;
+            console.log(gameBoard) ;
+        }
+        else{
+            prompt('Its already filled')
+            while(true){
+                [input,row,column] = getHumanInput() ;
+                if (gameBoard[row][column] === '') {
+                    gameBoard[row][column] = input ;
+                    console.log(gameBoard) ;
+                    break
+                }
+            }
+        }
+
+        if(gameBoard[0][0] === "X" && gameBoard[0][1] === "X" && gameBoard[0][2] === "X" ||
+            gameBoard[1][0] === "X" && gameBoard[1][1] === "X" && gameBoard[1][2] === "X" ||
+            gameBoard[2][0] === "X" && gameBoard[2][1] === "X" && gameBoard[2][2] === "X" ||
+            gameBoard[0][0] === "X" && gameBoard[1][0] === "X" && gameBoard[2][0] === "X" ||
+            gameBoard[0][1] === "X" && gameBoard[1][1] === "X" && gameBoard[2][1] === "X" ||
+            gameBoard[0][2] === "X" && gameBoard[1][2] === "X" && gameBoard[2][2] === "X" ||
+            gameBoard[0][0] === "X" && gameBoard[1][1] === "X" && gameBoard[2][2] === "X" ||
+            gameBoard[0][2] === "X" && gameBoard[1][1] === "X" && gameBoard[2][0] === "X"
+        ){
+            console.log("You Won") ;
+            gameEnded = true ;
+        }
+    
+        [input,row,column] = getCompInput() ;
+        if (gameBoard[row][column] === '') {
+            gameBoard[row][column] = "O" ;
+            console.log(gameBoard) ;
+        }
+        else{
+            while(true){
+                [input,row,column] = getCompInput() ;
+                if (gameBoard[row][column] === '') {
+                    gameBoard[row][column] = "O" ;
+                    console.log(gameBoard) ;
+                    break
+                }
+            }
+        }
+        if(gameBoard[0][0] === "O" && gameBoard[0][1] === "O" && gameBoard[0][2] === "O" ||
+            gameBoard[1][0] === "O" && gameBoard[1][1] === "O" && gameBoard[1][2] === "O" ||
+            gameBoard[2][0] === "O" && gameBoard[2][1] === "O" && gameBoard[2][2] === "O" ||
+            gameBoard[0][0] === "O" && gameBoard[1][0] === "O" && gameBoard[2][0] === "O" ||
+            gameBoard[0][1] === "O" && gameBoard[1][1] === "O" && gameBoard[2][1] === "O" ||
+            gameBoard[0][2] === "O" && gameBoard[1][2] === "O" && gameBoard[2][2] === "O" ||
+            gameBoard[0][0] === "O" && gameBoard[1][1] === "O" && gameBoard[2][2] === "O" ||
+            gameBoard[0][2] === "O" && gameBoard[1][1] === "O" && gameBoard[2][0] === "O"
+        ){
+            console.log("You Lost") ;
+            gameEnded = true ;
+        }
+    }
+}
+gameFunction()
