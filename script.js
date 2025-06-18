@@ -11,3 +11,16 @@ function gameBoard(){
     return array ;
 }
 
+function getHumanIput() {
+    humanSymbol = "X" ;
+    humanSelectedRow = parseInt(prompt('Enter the row you want to select: ')) ;
+    humanSelectedColumn = parseInt(prompt('Enter the column you want to select: ')) ;
+    return [humanSymbol,humanSelectedRow,humanSelectedColumn] ;
+}
+
+function getCompInput(){
+    compSymbol = "O" ;
+    compSelectedRow = Math.floor(Math.random()*3) ;
+    compSelectedColumn = Math.floor(Math.random()*3) ;
+    return [compSymbol,compSelectedRow,compSelectedColumn] ;
+}
