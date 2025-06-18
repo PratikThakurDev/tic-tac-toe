@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: 'Roboto Mono', monospace;
+  background: linear-gradient(to bottom, #e0f7fa, #80deea);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#welcome-box {
+  background-color: #ffffff;
+  padding: 40px;
+  width: 500px;
+  max-width: 90%;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 32px;
+  color: #004d40;
+  margin-bottom: 30px;
+}
+
+label {
+  font-size: 16px;
+  color: #004d40;
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin-top: 10px;
+  width: 60%;
+  font-size: 16px;
+  border: 2px solid #004d40;
+  border-radius: 6px;
+}
+
+#start-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #00796b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+#start-btn:hover {
+  background-color: #004d40;
+}
+
+#message-section {
+  display: none;
+  margin-top: 30px;
+}
+
+.welcome-line {
+  font-size: 20px;
+  color: #004d40;
+}
+
+.sub-line {
+  font-size: 18px;
+  color: #006064;
+}
+
+.choice-btn {
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
+  background-color: #00796b;
+  color: white;
+  padding: 12px 24px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.choice-btn:hover {
+  background-color: #004d40;
+  transform: scale(1.05);
+}
